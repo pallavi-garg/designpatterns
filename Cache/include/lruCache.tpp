@@ -35,7 +35,7 @@ void LruCache<T, K>::put(K key, T value)
     }
     if(!cachedEntry)
     {
-        if(this->data.size() >= this->capacity)
+        if((int)this->data.size() >= this->capacity)
             deleteLeastUsed();
         
         cachedEntry = new CacheNode<T, K>();
