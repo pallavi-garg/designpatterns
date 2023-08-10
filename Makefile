@@ -1,7 +1,7 @@
 #CXXFLAGS=-ggdb -std=c++11 -Wpedantic -Wall -Wextra -Werror -Wzero-as-null-pointer-constant
 CXXFLAGS=-std=c++17 -Wpedantic -Wall -Wextra -Werror -Wzero-as-null-pointer-constant -O3
 
-INC = -I DomainObject -I DomainObject/include
+INC = -I DomainObject -I DomainObject/include -I Cache -I Cache/include
 
 SRC = main.cpp
 DO_SRCS = $(wildcard DomainObject/src/*.cpp)

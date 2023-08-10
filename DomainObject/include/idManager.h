@@ -11,12 +11,7 @@ class IdManager
 
     public:
 
-        static IdManager* getInstance()
-        {
-            if(!instance)
-                instance = new IdManager();
-            return instance;
-        }
+        static IdManager* getInstance();
         int getNextId();
         //copy contructor
         IdManager(const IdManager& other) = delete;

@@ -1,14 +1,17 @@
 #ifndef DOMAIN_OBJECT_H
 #define DOMAIN_OBJECT_H
 
+#include "idManager.h"
+
 class DomainObject
 {
 private:
-    int id = 0;
+    const int id = IdManager::getInstance()->getNextId();
 public:
-    int getId();
-    DomainObject();
-    DomainObject(const DomainObject&);
+    int getId()
+    {
+        return id;
+    }
 };
 
 #endif

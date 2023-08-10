@@ -10,14 +10,13 @@ IdManager::~IdManager()
 {
     nextId = 0;
 }
-/*
+
 IdManager* IdManager::getInstance()
 {
     if(!IdManager::instance)
         IdManager::instance = new IdManager();
     return instance;
 }
-*/
 
 int IdManager::getNextId()
 {

@@ -4,16 +4,16 @@
 
 #include <iostream>
 
-Person::Person(std::string name, unsigned short age) : DomainObject()
+Person::Person(std::string name, unsigned short age) 
 {
     this->name = name;
     this->age = age;
 }
 
 //copy constructor
-Person::Person(const Person& other) : DomainObject(other)
+Person::Person(const Person& other) 
 {
-    std::cout<<"Copy contructor called for Person"<<std::endl;
+    std::cout<<"***Copy contructor called for Person***"<<std::endl;
     this->name = other.name;
     this->age = other.age;
 }
