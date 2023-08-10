@@ -11,6 +11,7 @@ private:
     unsigned short age = 0;
 
 public:
+    Person();
     Person(std::string name, unsigned short age);
     Person(const Person&);
     std::string getName();

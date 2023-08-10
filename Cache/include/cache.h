@@ -4,19 +4,14 @@
 #include <unordered_map>
 #include "cacheNode.h"
 
-template <class T, class K>
+template <typename T, typename K>
 class Cache
 {
-    private:
-        int capacity = 5;
-        CacheNode<T, K> *head = nullptr;
-        CacheNode<T, K> *tail = nullptr;
-        std::unordered_map<K, CacheNode<T, K>*> data;
-
     public:
-        Cache(int capacity);
-        void put(K key, T object);
-        T get(K key);
+        virtual void put(K key, T value) = 0;
+        virtual T get(K key) = 0;
+        virtual void erase(K key) = 0;
+        virtual void print() = 0;
 };
 
 #endif

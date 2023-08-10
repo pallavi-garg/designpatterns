@@ -4,6 +4,12 @@
 
 #include <iostream>
 
+Person::Person()
+{
+    this->name = "";
+    this->age = -1;
+}
+
 Person::Person(std::string name, unsigned short age) 
 {
     this->name = name;
