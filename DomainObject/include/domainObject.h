@@ -6,16 +6,14 @@
 class DomainObject
 {
 private:
-    int id;
+    const int id;
 public:
     int getId()
     {
         return id;
     }
-    DomainObject()
-    {
-        id = IdManager::getInstance()->getNextId();
-    }
+
+    DomainObject() : id(IdManager::getInstance()->getNextId()) {}
 };
 
 #endif

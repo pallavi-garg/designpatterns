@@ -6,7 +6,7 @@ class CacheNode
 {
     public:
         K key;
-        T data;
+        T *data;
         CacheNode<T, K> *prev = nullptr;
         CacheNode<T, K> *next = nullptr;
 };

@@ -9,7 +9,6 @@
 
 using namespace std;
 
-
 void printDetails(Person *person)
 {
     cout<<"Details of Person with id = "<<person->getId()<<" are:"<<endl;
@@ -28,7 +27,7 @@ template class LruCache<Person, int>;
 
 int main()
 {
-    Cache<Person*, int> *cache = new LruCache<Person*, int>(3);
+    Cache<Person, int> *cache = new LruCache<Person, int>(3);
 
     Person *person1 = new Person("A", 29);
     cache->put(person1->getId(), person1);
@@ -50,7 +49,6 @@ int main()
     cache->print();
     cache->erase(5);
     cache->print();
-
 
     /*
     //call copy constructor

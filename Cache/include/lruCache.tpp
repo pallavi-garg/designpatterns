@@ -11,10 +11,10 @@ LruCache<T,K>::LruCache(int capacity)
 }
 
 template <typename T, typename K>
-T LruCache<T, K>::get(K key)
+T* LruCache<T, K>::get(K key)
 {
     CacheNode<T, K> *cachedEntry = getCachedEntry(key);
-    T data;
+    T* data = nullptr;
     if(cachedEntry and cachedEntry->key == key)
     {
         data = cachedEntry->data;
@@ -25,7 +25,7 @@ T LruCache<T, K>::get(K key)
 }
 
 template <typename T, typename K>
-void LruCache<T, K>::put(K key, T value)
+void LruCache<T, K>::put(K key, T *value)
 {
     CacheNode<T, K> *cachedEntry = getCachedEntry(key);
     if(cachedEntry)

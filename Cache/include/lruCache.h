@@ -22,8 +22,8 @@ class LruCache: public Cache<T, K>
 
     public:
         LruCache(int capacity);
-        void put(K key, T value) override;
-        T get(K key) override;
+        void put(K key, T *value) override;
+        T* get(K key) override;
         void erase(K key) override;
         void print() override;
 };
