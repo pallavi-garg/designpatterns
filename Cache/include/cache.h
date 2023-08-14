@@ -12,6 +12,8 @@ class Cache
         virtual T* get(K key) = 0;
         virtual void erase(K key) = 0;
         virtual void print() = 0;
+        virtual ~Cache(){};
+        virtual void clear() = 0;
 };
 
 #endif

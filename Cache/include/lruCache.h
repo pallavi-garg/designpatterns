@@ -22,10 +22,12 @@ class LruCache: public Cache<T, K>
 
     public:
         LruCache(int capacity);
+        ~LruCache();
         void put(K key, T *value) override;
         T* get(K key) override;
         void erase(K key) override;
         void print() override;
+        void clear() override;
 };
 
 #include "lruCache.tpp"

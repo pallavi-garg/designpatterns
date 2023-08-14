@@ -50,6 +50,15 @@ int main()
     cache->erase(5);
     cache->print();
 
+    delete person1;
+    delete person2;
+    delete person3;
+    delete person4;
+
+    cache->clear();
+    delete cache;
+    //cache->print();
+
     /*
     //call copy constructor
     Person person3 = *person2;

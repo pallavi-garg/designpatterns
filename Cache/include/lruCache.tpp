@@ -1,4 +1,4 @@
-#include <istream>
+#include <iostream>
 
 template <typename T, typename K>
 LruCache<T,K>::LruCache(int capacity)
@@ -8,6 +8,16 @@ LruCache<T,K>::LruCache(int capacity)
     tail = new CacheNode<T, K>();
     head->next = tail;
     tail->prev = head;
+}
+
+template<typename T, typename K>
+LruCache<T,K>::~LruCache()
+{
+    std::cout<<"Deleting the entire cache!!"<<std::endl;
+    delete head;
+    delete tail;
+    data.clear();
+    capacity = 0;
 }
 
 template <typename T, typename K>
@@ -118,4 +128,12 @@ void LruCache<T, K>:: print()
         std::cout<<" "<<d.first;
     }
     std::cout<<std::endl;
+}
+
+template<typename T, typename K>
+void LruCache<T,K>:: clear()
+{
+    head->next = tail;
+    tail->prev = head;
+    this->data.clear();
 }
