@@ -1,4 +1,6 @@
 #include "../include/idManager.h"
+#include <functional>
+#include <iostream>
 
 IdManager *IdManager::instance = nullptr;
 
@@ -8,7 +10,15 @@ IdManager::IdManager()
 
 IdManager::~IdManager()
 {
-    nextId = 0;
+}
+
+void IdManager::deleteInstance()
+{
+    if(instance)
+    {
+        instance->nextId = 0;
+        delete instance;
+    }
 }
 
 IdManager* IdManager::getInstance()

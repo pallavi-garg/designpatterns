@@ -71,5 +71,6 @@ int main()
     printDetails(person6);
     */
 
+    IdManager::deleteInstance();
     return 0;
 }
