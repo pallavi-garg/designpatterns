@@ -10,6 +10,11 @@ Person::Person()
     this->age = -1;
 }
 
+Person::~Person()
+{
+    std::cout<<"Person with id "<<this->getId()<<" is now delete!"<<std::endl;
+}
+
 Person::Person(std::string name, unsigned short age) 
 {
     this->name = name;

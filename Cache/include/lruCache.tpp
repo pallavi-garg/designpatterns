@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sys/types.h>
 
 template <typename T, typename K>
 LruCache<T,K>::LruCache(int capacity)
@@ -13,18 +14,18 @@ LruCache<T,K>::LruCache(int capacity)
 template<typename T, typename K>
 LruCache<T,K>::~LruCache()
 {
+    this->clear();
     std::cout<<"Deleting the entire cache!!"<<std::endl;
     delete head;
     delete tail;
-    data.clear();
     capacity = 0;
 }
 
 template <typename T, typename K>
-T* LruCache<T, K>::get(K key)
+T LruCache<T, K>::get(K key)
 {
     CacheNode<T, K> *cachedEntry = getCachedEntry(key);
-    T* data = nullptr;
+    T data = nullptr;
     if(cachedEntry and cachedEntry->key == key)
     {
         data = cachedEntry->data;
@@ -35,8 +36,9 @@ T* LruCache<T, K>::get(K key)
 }
 
 template <typename T, typename K>
-void LruCache<T, K>::put(K key, T *value)
+void LruCache<T, K>::put(K key, T value)
 {
+    std::cout<<"Adding Key: "<< key <<std::endl;
     CacheNode<T, K> *cachedEntry = getCachedEntry(key);
     if(cachedEntry)
     {
@@ -77,10 +79,10 @@ void LruCache<T, K>::deleteLeastUsed()
     if(this->tail and this->tail->prev != this->head)
     {
         CacheNode<T, K>* lruNode = this->tail->prev;
+        std::cout<<"Deleting last used Key: "<< lruNode->key <<std::endl;
         this->tail->prev = lruNode->prev;
         this->tail->prev->next = this->tail;
         this->data.erase(lruNode->key);
-        lruNode = nullptr;
         delete lruNode;
     }
 }
@@ -102,6 +104,7 @@ void LruCache<T, K>::moveToFront(CacheNode<T, K> *node)
 {
     if(node and head)
     {
+        std::cout<<"Moving to front Key: "<< node->key <<std::endl;
         node->next = head->next;
         if(head->next)
             head->next->prev = node;
@@ -123,6 +126,7 @@ void LruCache<T, K>:: erase(K key)
 template <typename T, typename K>
 void LruCache<T, K>:: print()
 {
+    std::cout<<"\n***Printing Cache***"<< std::endl;
     for(auto d : this->data)
     {
         std::cout<<" "<<d.first;
@@ -133,7 +137,13 @@ void LruCache<T, K>:: print()
 template<typename T, typename K>
 void LruCache<T,K>:: clear()
 {
+    std::cout<<"Clearning Cache"<<std::endl;
     head->next = tail;
     tail->prev = head;
+    for(auto it : this->data)
+    {
+        //assumption is T is a pointer
+        delete this->data[it.first];
+    }
     this->data.clear();
 }

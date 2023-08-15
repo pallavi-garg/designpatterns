@@ -12,6 +12,7 @@ private:
 
 public:
     Person();
+    ~Person();
     Person(std::string name, unsigned short age);
     Person(const Person&);
     std::string getName();
